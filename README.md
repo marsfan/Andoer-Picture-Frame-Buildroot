@@ -58,9 +58,6 @@ See also the [Buildroot license notice][buildroot-license] for more nuances abou
 
 Patches are not covered by this license. Instead, they are covered by the license of the software to which the patches are applied.
 
-Finally, files in the `businesscard-flashdrive` package, including its README, my resume, and my photography, remain proprietary and are not released under the GPL.
-If you would like to build your own firmware based on this, simply remove those files, or deselect the package during build.
-
 [George's blog-post]: https://www.thirtythreeforty.net/posts/2019/12/my-business-card-runs-linux/
 [linux-f1c100s]: https://github.com/thirtythreeforty/linux.git
 [uboot-f1c100s]: https://github.com/thirtythreeforty/u-boot.git
