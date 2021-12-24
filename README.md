@@ -1,20 +1,19 @@
-# Business Card Linux
+# Andoer Picture Frame Buildroot
 
-[![Actions Status](https://github.com/thirtythreeforty/businesscard-linux/workflows/CI/badge.svg)](https://github.com/thirtythreeforty/businesscard-linux/actions)
+[![CI](https://github.com/marsfan/andoer-picture-frame-buildroot/actions/workflows/main.yml/badge.svg)](https://github.com/marsfan/andoer-picture-frame-buildroot/actions/workflows/main.yml)
 
-This is the Linux distribution small enough to run from the 8MB of storage on my Linux-powered business card.
-It is powered by the Allwinner F1C100s, a $1.40 Linux-capable ARM system-on-chip.
-This repository is the source code for its firmware image, based on Buildroot 2019.05.
-This directory is a "Buildroot external," providing a few patches, additional packages, and board support files on top of mainline Buildroot.
+This is a modified version of [George Hilliard's Linux-Powered Business Card](https://github.com/thirtythreeforty/businesscard-linux) that is meant to run on an 
+[Andoer 10" Digital Picture Frame](https://www.andoer.com/p-d3932b-eu.html) that
+I found at a thrift store. 
 
-For a complete write-up, see my [blog post][blog-post] about the project.
+The Picture Frame uses the F1C200s, which is identical the F1C100s in the 
+business card, but has 64MB of RAM instead of 32MB. 
 
-![business card top](doc/images/businesscard-top.jpg)
 
 ## Patched Linux and U-Boot
 
-I lightly patched the Linux kernel and U-Boot to get all the hardware peripherals working.
-You can find my forks here:
+George lightly patched the Linux kernel and U-Boot to get all the hardware peripherals working.
+You can find his forks here:
 
 - [Linux][linux-f1c100s] v5.0.2 (patched to enable USB gadget mode)
 - [U-Boot][uboot-f1c100s] (patched to support the F1C100s)
@@ -41,12 +40,12 @@ This may take a couple hours to do from scratch, depending on the speed of your 
 
 ## Installation
 
-If you have a [Lichee Pi Nano][lichee-nano] with a flash chip, or one of my blank business cards, you can flash it with the following command.
-Make sure the board is in FEL mode using `dmesg` or similar.
+Make sure the board is in FEL mode using `dmesg` or similar, then flash it with 
+the following command
 
 	output/host/bin/sunxi-fel -p spiflash-write 0 output/images/flash.bin
 
-You can erase the card after it boots by simply logging in (as `root`) and erasing the flash manually:
+You can erase the memory after it boots by simply logging in (as `root`) and erasing the flash manually:
 
 	dd if=/dev/zero of=/dev/mtd0
 
@@ -62,7 +61,7 @@ Patches are not covered by this license. Instead, they are covered by the licens
 Finally, files in the `businesscard-flashdrive` package, including its README, my resume, and my photography, remain proprietary and are not released under the GPL.
 If you would like to build your own firmware based on this, simply remove those files, or deselect the package during build.
 
-[blog-post]: https://www.thirtythreeforty.net/posts/2019/12/my-business-card-runs-linux/
+[George's blog-post]: https://www.thirtythreeforty.net/posts/2019/12/my-business-card-runs-linux/
 [linux-f1c100s]: https://github.com/thirtythreeforty/linux.git
 [uboot-f1c100s]: https://github.com/thirtythreeforty/u-boot.git
 [lichee-nano]: https://www.seeedstudio.com/Sipeed-Lichee-Nano-Linux-Development-Board-16M-Flash-WiFi-Version-p-2893.html
