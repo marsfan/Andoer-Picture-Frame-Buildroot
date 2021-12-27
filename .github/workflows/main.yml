@@ -6,28 +6,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Check out repository code
-      uses: actions/checkout@v2
-   
-    - name: Uninstall Host cmake
-      run: |
-        sudo apt-get purge cmake
-
+    - uses: actions/checkout@v2
     - name: Cache downloads
       uses: actions/cache@v2.1.7
       with:
         path: dl/
         key: dl
-    
     - name: Update submodules
       run: git submodule update --init
-    
     - name: Compile
       run: |
         cd buildroot
         make BR2_EXTERNAL=$PWD/.. thirtythreeforty_businesscard_defconfig
         make
-    
     - uses: actions/upload-artifact@v2.3.1
       with:
         name: flash.bin
