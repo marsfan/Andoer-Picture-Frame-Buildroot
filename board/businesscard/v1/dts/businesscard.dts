@@ -45,6 +45,7 @@
 	// 	};
 	// };
 
+	
 
 	i2c2: i2c@1C27800 {
 		compatible = "allwinner,sun6i-a31-i2c";
@@ -57,10 +58,15 @@
 		status = "okay";
 		#address-cells = <1>;
 		#size-cells = <0>;
+		clock-frequency = < 400000 >;
 
 		rtc: rtc@51 {
-			compatible = "nxp,pcf8563";
+			compatible = "haoyu,hym8563";
 			reg = <0x51>;
+			#clock-cells = <0>;
+			//TODO: Enable this?
+			// From kernel docs. Might need to change settings on it
+			//    interrupts = <13 IRQ_TYPE_EDGE_FALLING>; 
 		};
 	};
 
@@ -124,6 +130,11 @@
 
 
 	};
+
+// Disabled this since it appears that the output clock is not wired up on the PCB
+	// device {
+	// 	clocks = <&hym8563>;
+	// };
 };
 
 &pio {
