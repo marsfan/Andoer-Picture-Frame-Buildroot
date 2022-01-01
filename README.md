@@ -43,7 +43,7 @@ This may take a couple hours to do from scratch, depending on the speed of your 
 Make sure the board is in FEL mode using `dmesg` or similar, then flash it with 
 the following command
 
-	output/host/bin/sunxi-fel -p spiflash-write 0 output/images/flash.bin
+	sudo output/host/bin/sunxi-fel -p spiflash-write 0 output/images/flash.bin
 
 You can erase the memory after it boots by simply logging in (as `root`) and erasing the flash manually:
 
