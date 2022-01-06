@@ -1,0 +1,5 @@
+config BR2_PACKAGE_SUNIV_GPIO_WIGGLER
+select BR2_PACKAGE_LIBGPIOD
+bool "suniv GPIO wiggler"
+help
+Toggle the specified GPIO pin on and off at 2Hz
