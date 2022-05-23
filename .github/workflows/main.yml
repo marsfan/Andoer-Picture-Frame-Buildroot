@@ -19,7 +19,7 @@ jobs:
         cd buildroot
         make BR2_EXTERNAL=$PWD/.. thirtythreeforty_businesscard_defconfig
         make
-    - uses: actions/upload-artifact@v2.3.1
+    - uses: actions/upload-artifact@v3.1.0
       with:
         name: flash.bin
         path: buildroot/output/images/flash.bin
