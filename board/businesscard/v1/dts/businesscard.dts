@@ -45,7 +45,28 @@
 	// 	};
 	// };
 
-	
+
+	panel: panel {
+		compatible = "qiaodian,qd43003c0-40", "simple-panel";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		enable-gpios = <&pio 4 6 GPIO_ACTIVE_HIGH>; //TODO: Replace with ref to PIO object?
+		power-supply = <&reg_vcc3v3>; //TODO: Fix this
+		width-mm = <235>;
+		height-mm = <128>;
+
+		port@0 {
+			reg = <0>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			panel_input: endpoint@0 {
+				reg = <0>;
+				remote-endpoint = <&tcon0_out_lcd>;
+			};
+		};
+	};
+
 
 	i2c2: i2c@1C27800 {
 		compatible = "allwinner,sun6i-a31-i2c";
@@ -207,3 +228,15 @@
 	status = "okay";
 };
 
+&tcon0 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&lcd_rgb666_pins>;
+	status = "okay";
+};
+
+&tcon0_out {
+	tcon0_out_lcd: endpoint@0 {
+		reg = <0>;
+		remote-endpoint = <&panel_input>;
+	};
+};
