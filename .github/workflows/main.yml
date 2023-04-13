@@ -6,7 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3.1.0
+    - uses: actions/checkout@v3.5.1
     - name: Cache downloads
       uses: actions/cache@v3.0.11
       with:
